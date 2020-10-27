@@ -1,4 +1,4 @@
-package com.kiseok.project.review;
+package com.kiseok.review;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

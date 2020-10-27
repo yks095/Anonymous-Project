@@ -13,7 +13,7 @@ jacocoTestReport {
     }
 }
 
-group = 'com.kiseok.project'
+group = 'com.kiseok'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
