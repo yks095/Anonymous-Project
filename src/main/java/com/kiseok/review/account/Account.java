@@ -1,6 +1,6 @@
 package com.kiseok.review.account;
 
-import com.kiseok.review.genre.Genre;
+import com.kiseok.review.mygenre.MyGenre;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,10 +31,6 @@ public class Account {
     @Column
     private Boolean isVerified;
 
-    @ManyToMany
-    @JoinTable(name = "account_genre",
-            joinColumns = @JoinColumn(name = "account_id"),
-            inverseJoinColumns = @JoinColumn(name = "genre_id")
-    )
-    private final Set<Genre> genres = new HashSet<>();
+    @OneToMany(mappedBy = "account")
+    private final Set<MyGenre> myGenres = new HashSet<>();
 }

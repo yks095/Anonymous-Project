@@ -1,5 +1,5 @@
 package com.kiseok.review.account;
 
 public enum LoginType {
-    CREDENTIAL, GOOGLE
+    CREDENTIAL, GOOGLE, NAVER, GITHUB, FACEBOOK
 }
