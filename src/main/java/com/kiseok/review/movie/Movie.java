@@ -27,9 +27,6 @@ public class Movie {
     private String name;
 
     @Column
-    private String nation;
-
-    @Column
     private Integer runningTime;
 
     @Column

@@ -5,6 +5,8 @@ import com.kiseok.review.account.AccountRepository;
 import com.kiseok.review.account.LoginType;
 import com.kiseok.review.genre.Genre;
 import com.kiseok.review.genre.GenreRepository;
+import com.kiseok.review.movie.MovieRepository;
+import com.kiseok.review.moviegenre.MovieGenreRepository;
 import com.kiseok.review.mygenre.MyGenre;
 import com.kiseok.review.mygenre.MyGenreRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +18,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -36,6 +39,12 @@ public class BaseControllerTest {
     @Autowired
     protected MyGenreRepository myGenreRepository;
 
+    @Autowired
+    protected MovieRepository movieRepository;
+
+    @Autowired
+    protected MovieGenreRepository movieGenreRepository;
+
     protected String email = "email@email.com";
     protected String password = "1q2w3e4r!";
 
@@ -44,6 +53,8 @@ public class BaseControllerTest {
         myGenreRepository.deleteAll();
         genreRepository.deleteAll();
         accountRepository.deleteAll();
+        movieGenreRepository.deleteAll();
+        movieRepository.deleteAll();
 
         String[] names = {"드라마", "판타지", "서부", "공포", "멜로/로맨스", "모험", "스릴러", "느와르", "컬트", "다큐멘터리", "코미디", "가족", "미스터리", "전쟁", "애니메이션", "범죄", "뮤지컬", "SF", "액션", "무협", "에로", "서스펜스", "서사", "블랙코미디", "실험", "공연실황"};
         for (String name : names) {
@@ -62,17 +73,12 @@ public class BaseControllerTest {
         String[] str = {"공포", "SF"};
         for (String s : str) {
             Genre genre = genreRepository.findByName(s);
-            MyGenre myGenre = MyGenre.builder()
+            myGenreRepository.save(MyGenre.builder()
                     .account(account)
                     .genre(genre)
-                    .build();
-            myGenreRepository.save(myGenre);
-        }
+                    .build());
 
-        System.out.println(genreRepository.findAll().size());
-        System.out.println(accountRepository.findAll().size());
-        System.out.println(myGenreRepository.findAll().size());
+        }
     }
 
 }
-

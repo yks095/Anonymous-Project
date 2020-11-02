@@ -33,4 +33,8 @@ public class Account {
 
     @OneToMany(mappedBy = "account")
     private final Set<MyGenre> myGenres = new HashSet<>();
+
+    public void add(MyGenre myGenre) {
+        this.getMyGenres().add(myGenre);
+    }
 }

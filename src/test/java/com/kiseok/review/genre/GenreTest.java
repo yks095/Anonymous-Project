@@ -1,4 +1,4 @@
-package com.kiseok.review.movie;
+package com.kiseok.review.genre;
 
 import com.kiseok.review.genre.Genre;
 import org.junit.jupiter.api.DisplayName;

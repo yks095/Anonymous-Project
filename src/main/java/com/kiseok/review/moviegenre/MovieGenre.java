@@ -3,12 +3,13 @@ package com.kiseok.review.moviegenre;
 import com.kiseok.review.genre.Genre;
 import com.kiseok.review.movie.Movie;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Getter
+@Getter @Builder
 @NoArgsConstructor @AllArgsConstructor
 public class MovieGenre {
 
