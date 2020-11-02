@@ -35,17 +35,20 @@ public class ReviewApplication implements CommandLineRunner {
                 "범죄", "뮤지컬", "SF", "액션", "무협", "에로",
                 "서스펜스", "서사", "블랙코미디", "실험", "공연실황"
         };
-        Arrays.stream(names).forEach(name -> genreRepository.save(Genre.builder().name(name).build()));
-
-        Account account = Account.builder().email("email1").isVerified(false).loginType(LoginType.CREDENTIAL).password("password").build();
-        Account account2 = Account.builder().email("email2").isVerified(false).loginType(LoginType.CREDENTIAL).password("password").build();
-        accountRepository.save(account);
-        accountRepository.save(account2);
-
+//        Arrays.stream(names).forEach(name -> genreRepository.save(Genre.builder().name(name).build()));
+//
+//        Account account = Account.builder().email("email1").isVerified(false).loginType(LoginType.CREDENTIAL).password("password").build();
+//        Account account2 = Account.builder().email("email2").isVerified(false).loginType(LoginType.CREDENTIAL).password("password").build();
+//        accountRepository.save(account);
+//        accountRepository.save(account2);
+//
 //        IntStream.rangeClosed(1, 2).forEach(i -> {
 //            for(int j = 0; j < names.length / 2; j++)   {
-//                MyGenre myGenre = MyGenre.builder().genre(genreRepository.findByName(names[i * j])).build();
-//                myGenreRepository.save()
+//                MyGenre myGenre = MyGenre.builder()
+//                        .genre(genreRepository.findByName(names[i * j]))
+//                        .account(accountRepository.findByEmail("email" + i))
+//                        .build();
+//                myGenreRepository.save(myGenre);
 //            }
 //        });
 

@@ -1,25 +1,24 @@
-package com.kiseok.review.mygenre;
+package com.kiseok.review.moviegenre;
 
-import com.kiseok.review.account.Account;
 import com.kiseok.review.genre.Genre;
+import com.kiseok.review.movie.Movie;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Getter @Builder
+@Getter
 @NoArgsConstructor @AllArgsConstructor
-public class MyGenre {
+public class MovieGenre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Genre genre;
+    @ManyToOne
+    private Movie movie;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Account account;
+    @ManyToOne
+    private Genre genre;
 }
