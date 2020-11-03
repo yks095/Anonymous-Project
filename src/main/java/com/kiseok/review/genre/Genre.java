@@ -19,7 +19,7 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String name;
 
     @OneToMany(mappedBy = "genre")
@@ -27,7 +27,5 @@ public class Genre {
 
     @OneToMany
     private final Set<MyGenre> myGenres = new HashSet<>();
-
-
 
 }

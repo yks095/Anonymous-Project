@@ -1,16 +1,13 @@
 package com.kiseok.review.movie;
 
 import com.kiseok.review.moviegenre.MovieGenre;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+@Entity @ToString
 @Getter @Builder
 @NoArgsConstructor @AllArgsConstructor
 public class Movie {
@@ -37,6 +34,5 @@ public class Movie {
 
     @OneToMany(mappedBy = "movie")
     private final Set<MovieGenre> movieGenres = new HashSet<>();
-
 
 }

@@ -5,7 +5,6 @@ import com.kiseok.review.genre.Genre;
 import com.kiseok.review.moviegenre.MovieGenre;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 
 public class MovieRepositoryTest  extends BaseControllerTest {
