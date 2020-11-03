@@ -1,7 +1,6 @@
 package com.kiseok.review.genre;
 
 import com.kiseok.review.BaseControllerTest;
-import com.kiseok.review.genre.Genre;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
