@@ -8,7 +8,7 @@ public class AccountTest {
     @DisplayName("Account 객체 생성 테스트")
     @Test
     void beanTest() {
-        String email = "email@email.com";
+        String email = "test@email.com";
         String password = "password";
 
         Account account = Account.builder()

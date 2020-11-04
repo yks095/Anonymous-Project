@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class GenreRepositoryTest extends BaseControllerTest {
 
@@ -13,8 +15,12 @@ class GenreRepositoryTest extends BaseControllerTest {
     void getGenre() {
         List<Genre> genres = genreRepository.findAll();
         assertThat(genres.size()).isEqualTo(26);
-        assertThat(genreRepository.findByName("테스트")).isNull();
-        assertThat(genreRepository.findByName("드라마")).isNotNull();
+
+        String name = "테스트";
+        assertNull(genreRepository.findByName(name));
+
+        name = "드라마";
+        assertNotNull(genreRepository.findByName(name));
     }
 
 }

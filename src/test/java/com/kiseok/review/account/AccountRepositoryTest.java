@@ -1,25 +1,65 @@
 package com.kiseok.review.account;
 
 import com.kiseok.review.BaseControllerTest;
-import com.kiseok.review.mygenre.MyGenre;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.transaction.annotation.Transactional;
-import java.util.Set;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class AccountRepositoryTest extends BaseControllerTest {
 
-    @DisplayName("Account를 조회하는 테스트")
+    @BeforeEach
+    void setUp()    {
+        accountRepository.deleteAll();
+        genreRepository.deleteAll();
+    }
+
+    @DisplayName("Save Account")
     @Test
-    @Transactional
-    void findByEmailTest() {
-        Account account = accountRepository.findByEmail(email);
-        Set<MyGenre> genres = account.getMyGenres();
-        for (MyGenre genre : genres) {
-            assertThat(genre.getAccount().getEmail()).isEqualTo(email);
-        }
-        assertThat(genres.size()).isNotNull();
+    void saveAccountTest() {
+        String email = "test@email.com";
+        String password = "testPassword";
+
+        Account account = Account.builder()
+                .email(email)
+                .password(password)
+                .loginType(LoginType.CREDENTIAL)
+                .isVerified(false)
+                .build();
+        Account savedAccount = accountRepository.save(account);
+
+        assertEquals(savedAccount.getEmail(), account.getEmail());
+        assertEquals(savedAccount.getPassword(), account.getPassword());
+        assertEquals(savedAccount.getLoginType(), account.getLoginType());
+        assertFalse(savedAccount.getIsVerified());
+    }
+
+    @DisplayName("Load Account")
+    @Test
+    void loadAccountTest() {
+        String email = "test@email.com";
+        String password = "testPassword";
+
+        Account account = Account.builder()
+                .email(email)
+                .password(password)
+                .loginType(LoginType.CREDENTIAL)
+                .isVerified(false)
+                .build();
+        Account savedAccount = accountRepository.save(account);
+
+        assertEquals(savedAccount.getEmail(), account.getEmail());
+        assertEquals(savedAccount.getPassword(), account.getPassword());
+        assertEquals(savedAccount.getLoginType(), account.getLoginType());
+        assertFalse(savedAccount.getIsVerified());
+
+        Account getAccount = accountRepository.findByEmail(email);
+
+        assertEquals(getAccount.getEmail(), savedAccount.getEmail());
+        assertEquals(getAccount.getPassword(), savedAccount.getPassword());
+        assertEquals(getAccount.getLoginType(), savedAccount.getLoginType());
+        assertFalse(getAccount.getIsVerified());
     }
 
 }
