@@ -64,10 +64,12 @@ public class BaseControllerTest {
         for(MovieJson movieJson : movieJsons)  {
             Movie savedMovie = movieRepository.save(movieJson.toEntity());
             for(Long id : movieJson.getMovieGenreIds()) {
-                movieGenreRepository.save(MovieGenre.builder()
+                MovieGenre movieGenre = MovieGenre.builder()
                         .genre(genreRepository.findById(id).get())
                         .movie(savedMovie)
-                        .build());
+                        .build();
+
+                movieGenreRepository.save(movieGenre);
             }
         }
     }

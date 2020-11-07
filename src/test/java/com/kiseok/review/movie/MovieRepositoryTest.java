@@ -12,11 +12,11 @@ public class MovieRepositoryTest  extends BaseControllerTest {
     @DisplayName("Movie Test")
     @Test
     void movieTest() {
-        String code = "45290";
-        String name = "인터스텔라";
-        int runningTime = 169;
-        LocalDate localDate = LocalDate.of(2014, 11, 6);
-        String imageUrl = "imageUrl";
+        String code = "01234";
+        String name = "testName";
+        int runningTime = 100;
+        LocalDate localDate = LocalDate.of(2020, 1, 1);
+        String imageUrl = "testImageUrl";
 
         Movie movie = movieRepository.save(Movie.builder()
                 .code(code)
